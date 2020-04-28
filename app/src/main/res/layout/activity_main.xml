@@ -8,8 +8,8 @@
 
     <TextView
         android:id="@+id/edInto"
-        android:layout_width="336dp"
-        android:layout_height="62dp"
+        android:layout_width="344dp"
+        android:layout_height="64dp"
         android:text="Com qual meme você se parece?"
         android:textColor="#000000"
         android:textSize="24sp"

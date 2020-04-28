@@ -16,8 +16,10 @@ import java.util.Random;
 
 public class Analise extends AppCompatActivity {
 
+    static final int REQUEST_IMAGE_CAPTURE = 1;
     TextView txtNomeIdade;
-    ImageView ivPhoto   ;
+    ImageView ivPhoto ;
+    ImageView ivPhotoMeme;
 
     ArrayList<String> photos = new ArrayList<String>();
 
@@ -38,19 +40,25 @@ public class Analise extends AppCompatActivity {
         String age = getIntent().getStringExtra("age");
 
         txtNomeIdade.setText(name + ": " + age);
+
+        sortearPhoto();
     }
 
     public void onPhotoClick(View view) {
         Intent capPhoto = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(capPhoto, 1);
+        if (capPhoto.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(capPhoto, REQUEST_IMAGE_CAPTURE);
+        }
+
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode == 1 && resultCode == RESULT_OK) {
-            Bitmap img = (Bitmap) data.getExtras().get("data");
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap img = (Bitmap) extras.get("data");
             ivPhoto.setImageBitmap(img);
         }
 
@@ -61,7 +69,7 @@ public class Analise extends AppCompatActivity {
         int min = 1;
         int max = 4;
         int sorteio = rdn.nextInt(max - min) + min;
-        photos.get(sorteio);
+       // ivPhotoMeme.setAnaly("Você se parece com:" + sorteio +);
 
     }
 

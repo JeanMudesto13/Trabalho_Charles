@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
         edName = findViewById(R.id.edName);
         edAge = findViewById(R.id.edAge);
+
+        carregar();
     }
 
     public void onClick(View view) {
@@ -29,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
 
         chamarAnalise.putExtra( "name", name);
         chamarAnalise.putExtra( "age", age);
+        startActivity(chamarAnalise);
+
+        salvar(name, age);
         startActivity(chamarAnalise);
     }
 
