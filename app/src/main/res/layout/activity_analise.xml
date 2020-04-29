@@ -20,23 +20,21 @@
 
     <ImageView
         android:id="@+id/ivPhoto"
-        android:layout_width="157dp"
-        android:layout_height="152dp"
+        android:layout_width="188dp"
+        android:layout_height="163dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.44"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.192"
+        app:layout_constraintVertical_bias="0.202"
         tools:src="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/edMeme"
-        android:layout_width="227dp"
-        android:layout_height="40dp"
-        android:text="Este é o seu meme!"
+        android:layout_width="340dp"
+        android:layout_height="57dp"
         android:textColor="#050505"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.597"
@@ -54,20 +52,20 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/edMeme"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.549"
+        app:layout_constraintHorizontal_bias="0.566"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.025" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/ivPhotoMeme"
-        android:layout_width="158dp"
-        android:layout_height="163dp"
+        android:layout_width="196dp"
+        android:layout_height="168dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.475"
+        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edMeme"
-        app:layout_constraintVertical_bias="0.184"
+        app:layout_constraintVertical_bias="0.198"
         tools:srcCompat="@tools:sample/avatars" />
 </androidx.constraintlayout.widget.ConstraintLayout>

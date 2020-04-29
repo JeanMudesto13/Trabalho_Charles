@@ -18,18 +18,21 @@ public class Analise extends AppCompatActivity {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
     TextView txtNomeIdade;
-    ImageView ivPhoto ;
-    ImageView ivPhotoMeme;
+    TextView edMeme;
 
     ArrayList<String> photos = new ArrayList<String>();
+    ImageView ivPhoto ;
+    ImageView ivPhotoMeme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_analise);
 
+        edMeme = findViewById(R.id.edMeme);
         txtNomeIdade = findViewById(R.id.txtNomeIdade);
         ivPhoto = findViewById(R.id.ivPhoto);
+        ivPhotoMeme = findViewById(R.id.ivPhotoMeme);
 
         photos.add("memeone");
         photos.add("memetwo");
@@ -41,35 +44,55 @@ public class Analise extends AppCompatActivity {
 
         txtNomeIdade.setText(name + ": " + age);
 
-        sortearPhoto();
+
+        edMeme.setText("");
+
+
+    }
+    public void sortearPhoto(){
+
+        Random rdn = new Random();
+        int max = 4;
+        int sorteio = rdn.nextInt(max);
+
+        this.photos(sorteio);
+        edMeme.setText("Este é o meme que se parece com você:" );
+
+
     }
 
     public void onPhotoClick(View view) {
         Intent capPhoto = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (capPhoto.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(capPhoto, REQUEST_IMAGE_CAPTURE);
-        }
+            startActivityForResult(capPhoto, 1);
 
     }
 
+    public void photos(int sortear){
+        switch (sortear) {
+            case 0:
+                ivPhotoMeme.setImageDrawable(getResources().getDrawable(R.drawable.memeone));
+            break;
+            case 1:
+                ivPhotoMeme.setImageDrawable(getResources().getDrawable(R.drawable.memetwo));
+            break;
+            case 2:
+                ivPhotoMeme.setImageDrawable(getResources().getDrawable(R.drawable.memethree));
+                break;
+            case 3:
+                ivPhotoMeme.setImageDrawable(getResources().getDrawable(R.drawable.memefour));
+                break;
+        }
+
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap img = (Bitmap) extras.get("data");
+            Bitmap img = (Bitmap) data.getExtras().get("data");
             ivPhoto.setImageBitmap(img);
+            this.sortearPhoto();
         }
-
-    }
-
-    public void sortearPhoto(){
-        Random rdn = new Random();
-        int min = 1;
-        int max = 4;
-        int sorteio = rdn.nextInt(max - min) + min;
-       // ivPhotoMeme.setAnaly("Você se parece com:" + sorteio +);
 
     }
 
